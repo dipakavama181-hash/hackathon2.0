@@ -1,0 +1,246 @@
+{
+  "repo": "C:\\Users\\DEEPAK\\Downloads\\bugagent_project\\bugagent_project\\examples\\buggy_shop",
+  "duration_s": 7.4,
+  "llm_enabled": false,
+  "llm_note": "disabled by --no-llm",
+  "baseline_tests": {
+    "ran": true,
+    "passed": 2,
+    "failed": 3,
+    "errors": 0,
+    "failing": [
+      "tests/test_cart.py::test_add_item_is_isolated",
+      "tests/test_cart.py::test_total_without_discount",
+      "tests/test_cart.py::test_total_with_discount"
+    ],
+    "output": "FFF..                                                                    [100%]\n================================== FAILURES ===================================\n__________________________ test_add_item_is_isolated __________________________\ntests\\test_cart.py:6: in test_add_item_is_isolated\n    assert add_item(2) == [2]\nE   assert [1, 2] == [2]\nE     \nE     At index 0 diff: 1 != 2\nE     Left contains one more item: 2\nE     Use -v to get more diff\n_________________________ test_total_without_discount _________________________\ntests\\test_cart.py:10: in test_total_without_discount\n    assert total([10, 20]) == 30\nE   assert 0 == 30\nE    +  where 0 = total([10, 20])\n__________________________ test_total_with_discount ___________________________\ntests\\test_cart.py:14: in test_total_with_discount\n    assert total([100], 0.1) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = total([100], 0.1)\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_add_item_is_isolated - assert [1, 2] == [2]\nFAILED tests/test_cart.py::test_total_without_discount - assert 0 == 30\nFAILED tests/test_cart.py::test_total_with_discount - assert 10.0 == 90\n3 failed, 2 passed in 0.17s\n",
+    "note": ""
+  },
+  "final_tests": {
+    "ran": true,
+    "passed": 2,
+    "failed": 3,
+    "errors": 0,
+    "failing": [
+      "tests/test_cart.py::test_add_item_is_isolated",
+      "tests/test_cart.py::test_total_without_discount",
+      "tests/test_cart.py::test_total_with_discount"
+    ],
+    "output": "FFF..                                                                    [100%]\n================================== FAILURES ===================================\n__________________________ test_add_item_is_isolated __________________________\ntests\\test_cart.py:6: in test_add_item_is_isolated\n    assert add_item(2) == [2]\nE   assert [1, 2] == [2]\nE     \nE     At index 0 diff: 1 != 2\nE     Left contains one more item: 2\nE     Use -v to get more diff\n_________________________ test_total_without_discount _________________________\ntests\\test_cart.py:10: in test_total_without_discount\n    assert total([10, 20]) == 30\nE   assert 0 == 30\nE    +  where 0 = total([10, 20])\n__________________________ test_total_with_discount ___________________________\ntests\\test_cart.py:14: in test_total_with_discount\n    assert total([100], 0.1) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = total([100], 0.1)\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_add_item_is_isolated - assert [1, 2] == [2]\nFAILED tests/test_cart.py::test_total_without_discount - assert 0 == 30\nFAILED tests/test_cart.py::test_total_with_discount - assert 10.0 == 90\n3 failed, 2 passed in 0.16s\n",
+    "note": ""
+  },
+  "initial_findings": [
+    {
+      "id": "F001",
+      "rule": "B002",
+      "severity": "high",
+      "file": "shop/cart.py",
+      "line": 6,
+      "message": "Mutable default argument is shared between calls (in `add_item`)",
+      "snippet": "def add_item(item, items=[]):",
+      "fixable": false
+    },
+    {
+      "id": "F002",
+      "rule": "B004",
+      "severity": "high",
+      "file": "shop/cart.py",
+      "line": 30,
+      "message": "Use of eval()/exec() on possibly untrusted input (eval)",
+      "snippet": "return eval(expr)",
+      "fixable": false
+    },
+    {
+      "id": "F003",
+      "rule": "B001",
+      "severity": "medium",
+      "file": "shop/cart.py",
+      "line": 19,
+      "message": "Bare `except:` swallows every exception, including KeyboardInterrupt",
+      "snippet": "except:",
+      "fixable": true
+    },
+    {
+      "id": "F004",
+      "rule": "B005",
+      "severity": "low",
+      "file": "shop/cart.py",
+      "line": 1,
+      "message": "Unused import (os)",
+      "snippet": "import os",
+      "fixable": true
+    },
+    {
+      "id": "F005",
+      "rule": "B005",
+      "severity": "low",
+      "file": "shop/cart.py",
+      "line": 2,
+      "message": "Unused import (json)",
+      "snippet": "import json",
+      "fixable": true
+    },
+    {
+      "id": "F006",
+      "rule": "B005",
+      "severity": "low",
+      "file": "shop/cart.py",
+      "line": 3,
+      "message": "Unused import (List)",
+      "snippet": "from typing import List",
+      "fixable": true
+    },
+    {
+      "id": "F007",
+      "rule": "B003",
+      "severity": "low",
+      "file": "shop/cart.py",
+      "line": 24,
+      "message": "Comparison to None with ==/!= (use `is` / `is not`)",
+      "snippet": "if x == None:",
+      "fixable": true
+    }
+  ],
+  "remaining_findings": [
+    {
+      "id": "F001",
+      "rule": "B002",
+      "severity": "high",
+      "file": "shop/cart.py",
+      "line": 3,
+      "message": "Mutable default argument is shared between calls (in `add_item`)",
+      "snippet": "def add_item(item, items=[]):",
+      "fixable": false
+    },
+    {
+      "id": "F002",
+      "rule": "B004",
+      "severity": "high",
+      "file": "shop/cart.py",
+      "line": 27,
+      "message": "Use of eval()/exec() on possibly untrusted input (eval)",
+      "snippet": "return eval(expr)",
+      "fixable": false
+    }
+  ],
+  "fixes": [
+    {
+      "kind": "static",
+      "target": "F007 B003 shop/cart.py:24",
+      "source": "rule",
+      "status": "accepted",
+      "explanation": "Comparison to None with ==/!= (use `is` / `is not`)",
+      "diff": "--- a/shop/cart.py\n+++ b/shop/cart.py\n@@ -21,7 +21,7 @@\n \n \n def is_empty(x):\n-    if x == None:\n+    if x is None:\n         return True\n     return False\n \n",
+      "attempts": 1,
+      "note": "",
+      "tests_after": {
+        "ran": true,
+        "passed": 2,
+        "failed": 3,
+        "errors": 0,
+        "failing": [
+          "tests/test_cart.py::test_add_item_is_isolated",
+          "tests/test_cart.py::test_total_without_discount",
+          "tests/test_cart.py::test_total_with_discount"
+        ],
+        "output": "FFF..                                                                    [100%]\n================================== FAILURES ===================================\n__________________________ test_add_item_is_isolated __________________________\ntests\\test_cart.py:6: in test_add_item_is_isolated\n    assert add_item(2) == [2]\nE   assert [1, 2] == [2]\nE     \nE     At index 0 diff: 1 != 2\nE     Left contains one more item: 2\nE     Use -v to get more diff\n_________________________ test_total_without_discount _________________________\ntests\\test_cart.py:10: in test_total_without_discount\n    assert total([10, 20]) == 30\nE   assert 0 == 30\nE    +  where 0 = total([10, 20])\n__________________________ test_total_with_discount ___________________________\ntests\\test_cart.py:14: in test_total_with_discount\n    assert total([100], 0.1) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = total([100], 0.1)\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_add_item_is_isolated - assert [1, 2] == [2]\nFAILED tests/test_cart.py::test_total_without_discount - assert 0 == 30\nFAILED tests/test_cart.py::test_total_with_discount - assert 10.0 == 90\n3 failed, 2 passed in 0.15s\n",
+        "note": ""
+      }
+    },
+    {
+      "kind": "static",
+      "target": "F003 B001 shop/cart.py:19",
+      "source": "rule",
+      "status": "accepted",
+      "explanation": "Bare `except:` swallows every exception, including KeyboardInterrupt",
+      "diff": "--- a/shop/cart.py\n+++ b/shop/cart.py\n@@ -16,7 +16,7 @@\n def safe_div(a, b):\n     try:\n         return a / b\n-    except:\n+    except Exception:\n         return None\n \n \n",
+      "attempts": 1,
+      "note": "",
+      "tests_after": {
+        "ran": true,
+        "passed": 2,
+        "failed": 3,
+        "errors": 0,
+        "failing": [
+          "tests/test_cart.py::test_add_item_is_isolated",
+          "tests/test_cart.py::test_total_without_discount",
+          "tests/test_cart.py::test_total_with_discount"
+        ],
+        "output": "FFF..                                                                    [100%]\n================================== FAILURES ===================================\n__________________________ test_add_item_is_isolated __________________________\ntests\\test_cart.py:6: in test_add_item_is_isolated\n    assert add_item(2) == [2]\nE   assert [1, 2] == [2]\nE     \nE     At index 0 diff: 1 != 2\nE     Left contains one more item: 2\nE     Use -v to get more diff\n_________________________ test_total_without_discount _________________________\ntests\\test_cart.py:10: in test_total_without_discount\n    assert total([10, 20]) == 30\nE   assert 0 == 30\nE    +  where 0 = total([10, 20])\n__________________________ test_total_with_discount ___________________________\ntests\\test_cart.py:14: in test_total_with_discount\n    assert total([100], 0.1) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = total([100], 0.1)\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_add_item_is_isolated - assert [1, 2] == [2]\nFAILED tests/test_cart.py::test_total_without_discount - assert 0 == 30\nFAILED tests/test_cart.py::test_total_with_discount - assert 10.0 == 90\n3 failed, 2 passed in 0.16s\n",
+        "note": ""
+      }
+    },
+    {
+      "kind": "static",
+      "target": "F006 B005 shop/cart.py:3",
+      "source": "rule",
+      "status": "accepted",
+      "explanation": "Unused import (List)",
+      "diff": "--- a/shop/cart.py\n+++ b/shop/cart.py\n@@ -1,6 +1,5 @@\n import os\n import json\n-from typing import List\n \n \n def add_item(item, items=[]):\n",
+      "attempts": 1,
+      "note": "",
+      "tests_after": {
+        "ran": true,
+        "passed": 2,
+        "failed": 3,
+        "errors": 0,
+        "failing": [
+          "tests/test_cart.py::test_add_item_is_isolated",
+          "tests/test_cart.py::test_total_without_discount",
+          "tests/test_cart.py::test_total_with_discount"
+        ],
+        "output": "FFF..                                                                    [100%]\n================================== FAILURES ===================================\n__________________________ test_add_item_is_isolated __________________________\ntests\\test_cart.py:6: in test_add_item_is_isolated\n    assert add_item(2) == [2]\nE   assert [1, 2] == [2]\nE     \nE     At index 0 diff: 1 != 2\nE     Left contains one more item: 2\nE     Use -v to get more diff\n_________________________ test_total_without_discount _________________________\ntests\\test_cart.py:10: in test_total_without_discount\n    assert total([10, 20]) == 30\nE   assert 0 == 30\nE    +  where 0 = total([10, 20])\n__________________________ test_total_with_discount ___________________________\ntests\\test_cart.py:14: in test_total_with_discount\n    assert total([100], 0.1) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = total([100], 0.1)\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_add_item_is_isolated - assert [1, 2] == [2]\nFAILED tests/test_cart.py::test_total_without_discount - assert 0 == 30\nFAILED tests/test_cart.py::test_total_with_discount - assert 10.0 == 90\n3 failed, 2 passed in 0.19s\n",
+        "note": ""
+      }
+    },
+    {
+      "kind": "static",
+      "target": "F005 B005 shop/cart.py:2",
+      "source": "rule",
+      "status": "accepted",
+      "explanation": "Unused import (json)",
+      "diff": "--- a/shop/cart.py\n+++ b/shop/cart.py\n@@ -1,5 +1,4 @@\n import os\n-import json\n \n \n def add_item(item, items=[]):\n",
+      "attempts": 1,
+      "note": "",
+      "tests_after": {
+        "ran": true,
+        "passed": 2,
+        "failed": 3,
+        "errors": 0,
+        "failing": [
+          "tests/test_cart.py::test_add_item_is_isolated",
+          "tests/test_cart.py::test_total_without_discount",
+          "tests/test_cart.py::test_total_with_discount"
+        ],
+        "output": "FFF..                                                                    [100%]\n================================== FAILURES ===================================\n__________________________ test_add_item_is_isolated __________________________\ntests\\test_cart.py:6: in test_add_item_is_isolated\n    assert add_item(2) == [2]\nE   assert [1, 2] == [2]\nE     \nE     At index 0 diff: 1 != 2\nE     Left contains one more item: 2\nE     Use -v to get more diff\n_________________________ test_total_without_discount _________________________\ntests\\test_cart.py:10: in test_total_without_discount\n    assert total([10, 20]) == 30\nE   assert 0 == 30\nE    +  where 0 = total([10, 20])\n__________________________ test_total_with_discount ___________________________\ntests\\test_cart.py:14: in test_total_with_discount\n    assert total([100], 0.1) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = total([100], 0.1)\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_add_item_is_isolated - assert [1, 2] == [2]\nFAILED tests/test_cart.py::test_total_without_discount - assert 0 == 30\nFAILED tests/test_cart.py::test_total_with_discount - assert 10.0 == 90\n3 failed, 2 passed in 0.18s\n",
+        "note": ""
+      }
+    },
+    {
+      "kind": "static",
+      "target": "F004 B005 shop/cart.py:1",
+      "source": "rule",
+      "status": "accepted",
+      "explanation": "Unused import (os)",
+      "diff": "--- a/shop/cart.py\n+++ b/shop/cart.py\n@@ -1,4 +1,3 @@\n-import os\n \n \n def add_item(item, items=[]):\n",
+      "attempts": 1,
+      "note": "",
+      "tests_after": {
+        "ran": true,
+        "passed": 2,
+        "failed": 3,
+        "errors": 0,
+        "failing": [
+          "tests/test_cart.py::test_add_item_is_isolated",
+          "tests/test_cart.py::test_total_without_discount",
+          "tests/test_cart.py::test_total_with_discount"
+        ],
+        "output": "FFF..                                                                    [100%]\n================================== FAILURES ===================================\n__________________________ test_add_item_is_isolated __________________________\ntests\\test_cart.py:6: in test_add_item_is_isolated\n    assert add_item(2) == [2]\nE   assert [1, 2] == [2]\nE     \nE     At index 0 diff: 1 != 2\nE     Left contains one more item: 2\nE     Use -v to get more diff\n_________________________ test_total_without_discount _________________________\ntests\\test_cart.py:10: in test_total_without_discount\n    assert total([10, 20]) == 30\nE   assert 0 == 30\nE    +  where 0 = total([10, 20])\n__________________________ test_total_with_discount ___________________________\ntests\\test_cart.py:14: in test_total_with_discount\n    assert total([100], 0.1) == 90\nE   assert 10.0 == 90\nE    +  where 10.0 = total([100], 0.1)\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_add_item_is_isolated - assert [1, 2] == [2]\nFAILED tests/test_cart.py::test_total_without_discount - assert 0 == 30\nFAILED tests/test_cart.py::test_total_with_discount - assert 10.0 == 90\n3 failed, 2 passed in 0.15s\n",
+        "note": ""
+      }
+    }
+  ],
+  "changed_files": [
+    "shop/cart.py"
+  ]
+}
